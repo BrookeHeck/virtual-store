@@ -31,12 +31,16 @@ const initialState = {
 
 const reducer = (state=initialState, action) => {
   switch(action.type) {
-    case'INCREMENT_INVENTORY':
+    case 'increment_inventory':
+      state = {...state, [action.payload.normalized]: action.payload}
+      return state;
+    case 'decrement_inventory':
       state = {...state, [action.payload.normalized]: action.payload}
       return state;
     default: return state;
   }
-  switch(action.type) {
-
-  }
 }
+
+const store = createStore(reducer);
+
+export default store;
