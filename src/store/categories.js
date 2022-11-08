@@ -1,7 +1,5 @@
-import { createStore } from 'redux';
-
 const initialState = {
-  active: 'ALL',
+  active: 'all',
   categories: [
     {
       normalized: 'electronics',
@@ -39,6 +37,4 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-const store = createStore(reducer);
-
-export default store;
+export default reducer;

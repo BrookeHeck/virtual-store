@@ -1,5 +1,3 @@
-import { createStore } from 'redux';
-
 const initialState = {
   products: {
     laptop: {
@@ -41,6 +39,4 @@ const reducer = (state=initialState, action) => {
   }
 }
 
-const store = createStore(reducer);
-
-export default store;
+export default reducer;

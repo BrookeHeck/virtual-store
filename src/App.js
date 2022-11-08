@@ -1,7 +1,10 @@
+import Header from './components/header/header';
+import StoreFront from './components/storefront';
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Header />
+      <StoreFront/>
     </div>
   );
 }

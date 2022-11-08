@@ -1,5 +1,3 @@
-import { createStore } from "redux";
-
 const initialState = {
   numberOfItems: 0,
   productList: [],
@@ -25,7 +23,5 @@ const reducer = (state=initialState, action) => {
   }
 }
 
-const store = createStore(reducer);
-
-export default store;
+export default reducer;
 
