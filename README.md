@@ -3,7 +3,7 @@
 ## Overview
 This site is a virtual store that can show users what products are for sale. The items can be sorted by category and added to a cart. By clicking the cart icon, they can see how many items are in the cart. It can also keeps track of inventory by incrementing and decrementing inventory counts when a user adds and removes items from their cart.
 
-[Deployed Site](https://symphonious-granita-4b24da.netlify.app/)
+[Deployed Site](https://helpful-kitsune-28bacf.netlify.app/)
 
 ## UML
 <img src='./lab36.png'>
