@@ -7,23 +7,23 @@ function Header() {
   return (
     <AppBar position="static">
       <Toolbar variant="dense">
+
         <Typography variant="h5" color="inherit" component="div">
           Virtual Store
         </Typography>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
+
+        <IconButton color="inherit">
+          <Badge badgeContent={0} color="error">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
+
         <IconButton color="inherit">
           <Badge >
             <HomeIcon />
           </Badge>
         </IconButton>
+        
       </Toolbar>
     </AppBar>
   )

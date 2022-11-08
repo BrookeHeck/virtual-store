@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography} from '@mui/material'
-import categories from './categories';
+import { Card, CardActions, CardContent, CardMedia, Button, Typography, Container} from '@mui/material'
+import './../../styles/products.css';
 
 
 function Products(props) {
@@ -11,7 +11,7 @@ function Products(props) {
   console.log(displayList);
 
   return (
-    <>
+    <Container id='productsContainer'>
       {
         displayList.map(product => (
           <Card sx={{ maxWidth: 345 }} key={product.id}>
@@ -34,7 +34,7 @@ function Products(props) {
         </Card>
         ))
       }
-    </>
+    </Container>
   );
 }
 

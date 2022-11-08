@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { Typography, Container } from "@mui/material";
+import './../../styles/current-categories.css';
 
 function CurrentCategory(props) {
   const activeCategory = props.categories.categories.find(category => {
@@ -7,7 +8,7 @@ function CurrentCategory(props) {
   })
 
   return (
-    <Container>
+    <Container id='current-categories'>
       <Typography variant="h2">{activeCategory.display}</Typography>
       <Typography variant="h5">{activeCategory.description}</Typography>
     </Container>

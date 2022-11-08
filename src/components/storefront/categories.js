@@ -1,7 +1,8 @@
-import { Typography, Box, Tab } from '@mui/material';
+import { Typography, Box, Tab, Container } from '@mui/material';
 import { TabContext, TabList, TabPanel} from '@mui/lab'
 import store from './../../store';
 import { connect } from 'react-redux';
+import './../../styles/categories.css'
 
 function Categories(props) {
 
@@ -10,8 +11,8 @@ function Categories(props) {
   }
 
   return (
-    <>
-      <Typography variant="h6">Browse Our Categories</Typography>
+    <Container>
+      <Typography variant="h4">Browse Our Categories</Typography>
       <TabContext value={props.categories.active}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
@@ -26,7 +27,7 @@ function Categories(props) {
         <TabPanel value="2">Item Two</TabPanel>
         <TabPanel value="3">Item Three</TabPanel>
       </TabContext>
-    </>
+    </Container>
   )
 }
 
