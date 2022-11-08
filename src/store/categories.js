@@ -32,7 +32,7 @@ const reducer = (state = initialState, action) => {
     case 'electronics':
       state = {...state, active: action.type};
       return state;
-    case 'FOOD':
+    case 'food':
       state = {...state, active: action.type}
       return state;
     case 'outdoors':

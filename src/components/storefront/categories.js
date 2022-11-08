@@ -4,7 +4,6 @@ import store from './../../store';
 import { connect } from 'react-redux';
 
 function Categories(props) {
-  console.log(props);
 
   const handleChange = (e, newValue) => {
     store.dispatch({type: newValue});
