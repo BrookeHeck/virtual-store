@@ -2,6 +2,11 @@ const initialState = {
   active: 'all',
   categories: [
     {
+      normalized: 'all',
+      display: 'All',
+      description: 'What a great selection!'
+    },
+    {
       normalized: 'electronics',
       display: 'Electronics',
       description: 'TVs, Computers, Phones, Accessories, and MORE!',
