@@ -1,23 +1,24 @@
 import { Typography, Box, Tab, Container } from '@mui/material';
 import { TabContext, TabList, TabPanel} from '@mui/lab'
-import store from './../../store';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './../../styles/categories.css'
 
-function Categories(props) {
+function Categories() {
+  const dispatch = useDispatch();
+  const categories = useSelector(state => state.categories);
 
   const handleChange = (e, newValue) => {
-    store.dispatch({type: newValue});
+    dispatch({type: newValue});
   }
 
   return (
     <Container>
       <Typography variant="h4">Browse Our Categories</Typography>
-      <TabContext value={props.categories.active}>
+      <TabContext value={categories.active}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
             {
-              props.categories.categories.map(category => {
+              categories.categories.map(category => {
                 return <Tab label={category.display} value={category.normalized} key={category.normalized}/>
               })
             }
@@ -31,8 +32,4 @@ function Categories(props) {
   )
 }
 
-const mapStateToProps = (state) => ({
-  categories: state.categories
-});
-
-export default connect(mapStateToProps)(Categories);
+export default Categories;
