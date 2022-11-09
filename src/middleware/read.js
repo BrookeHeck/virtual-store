@@ -1,11 +1,10 @@
 import axios from 'axios';
 
 function getAllPayload(arr) {
-  const action = {
+  return {
     type: `get_products`,
     payload: arr
   }
-  return action;
 }
 
 const getRequest = async () => {
