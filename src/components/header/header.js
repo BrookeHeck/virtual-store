@@ -3,7 +3,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import HomeIcon from '@mui/icons-material/Home';
 
 
-function Header() {
+function Header({ setShowCart }) {
   return (
     <AppBar position="static">
       <Toolbar variant="dense">
@@ -12,13 +12,13 @@ function Header() {
           Virtual Store
         </Typography>
 
-        <IconButton color="inherit">
+        <IconButton color="inherit" onClick={() => setShowCart(true)}>
           <Badge badgeContent={0} color="error">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
 
-        <IconButton color="inherit">
+        <IconButton color="inherit" onClick={() => setShowCart(false)}>
           <Badge >
             <HomeIcon />
           </Badge>

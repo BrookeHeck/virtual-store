@@ -3,17 +3,39 @@ const initialState = {
   productList: [],
 }
 
+const getNewProductList = (list, product, add) => {
+  let alreadyInCart = false;
+  const newList = list.map(currentProduct => {
+    if(product.id !== currentProduct.id) return currentProduct;
+    else {
+      alreadyInCart = true;
+      add ? currentProduct.amountInCart++ : currentProduct.amountInCart--;
+      return currentProduct;
+    }
+  });
+
+  let filteredList = newList.filter(currentProduct => currentProduct.amountInCart > 0);
+
+
+  if(alreadyInCart) return filteredList;
+  else {
+    product.amountInCart = 1;
+    return [...filteredList, product];
+  }
+}
+
 const reducer = (state=initialState, action) => {
   switch(action.type) {
     case 'add_product':
       state = {
         numberOfItems: state.numberOfItems + 1,
-        productList: [...state.productList, action.payload.product]}
+        productList: getNewProductList(state.productList, action.payload.product, true),
+      }
       return state;
     case 'remove_product':
       state = {
         numberOfItems: state.numberOfItems - 1,
-        productList: state.productList.filter(product => product.id === action.payload.product.id),
+        productList: getNewProductList(state.productList, action.payload.product, false),
       }
       return state;
     case 'clear_cart':

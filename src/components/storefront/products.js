@@ -28,7 +28,6 @@ function Products(props) {
       store.dispatch({ type: 'add_product', payload: { product } });
       const updatedProduct = {...product, inventoryCount: product.inventoryCount - 1 }
       store.dispatch({type: 'update_product', payload: updatedProduct});
-      console.log(updatedProduct);
     } else {
       alert('out of stock');
     }
