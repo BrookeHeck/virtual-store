@@ -37,3 +37,5 @@ Your app is ready to be deployed!
 nov-07-2022 @ 1910 - redux store holds categories, cart and products, products are displayed and can be filtered by category
 
 nov-08-2022 @ 1907 - cart features fully functioning
+
+nov-09-2022 @ 2023 - make requests to a server holding product info using thunk middleware
