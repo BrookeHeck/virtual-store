@@ -1,22 +1,28 @@
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Card, CardMedia, CardContent, CardActions } from '@mui/material';
 import { Container, Typography, Button } from '@mui/material';
 
-const SimpleCart = (props) => {
+const SimpleCart = () => {
+  const dispatch = useDispatch();
+  const cart = useSelector(state => state.cart);
+  const products = useSelector(state => state.products).products;
 
   const removeFromCart = (product) => {
-    props.dispatch({ type: 'remove_product', payload: { product } });
+    dispatch({ type: 'remove_product', payload: { product } });
+    const updatedProduct = products.find(currProduct => currProduct.id === product.id);
+    updatedProduct.inventoryCount++;
+    dispatch({ type: 'update_product', payload: updatedProduct });
   }
 
   return (
     <>
       <Container id='current-categories'>
         <Typography variant="h2">Your Cart</Typography>
-        <Typography variant="h5">Total Items: {props.cart.numberOfItems}</Typography>
+        <Typography variant="h5">Total Items: {cart.numberOfItems}</Typography>
       </Container>
       <Container id='productsContainer'>
         {
-          props.cart.productList.map(product => (
+          cart.productList.map(product => (
             <Card sx={{ maxWidth: 345 }} key={product.id}>
               <CardMedia
                 component="img"
@@ -40,11 +46,7 @@ const SimpleCart = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
-  cart: state.cart
-});
-
-export default connect(mapStateToProps)(SimpleCart);
+export default SimpleCart;
 
 
 

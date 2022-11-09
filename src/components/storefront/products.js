@@ -1,22 +1,20 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
-import store from './../../store';
+import { useDispatch, useSelector } from 'react-redux';
 import { Card, CardActions, CardContent, CardMedia, Button } from '@mui/material';
 import { Typography, Container } from '@mui/material';
 import Details from './../products/details';
 import './../../styles/products.css';
 
-{/* <Snackbar open={true} autoHideDuration={5000}>
-          <Alert severity="error" sx={{ width: '100%' }}>Out of Stock</Alert>
-        </Snackbar> */}
+function Products() {
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.products).products;
+  const categories = useSelector(state => state.categories);
 
-
-function Products(props) {
   const [showModal, setShowModal] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(props.products[0]);
+  const [selectedProduct, setSelectedProduct] = useState(products[0]);
 
-  const displayList = props.categories.active === 'all' ? props.products :
-    props.products.filter(product => product.category === props.categories.active);
+  const displayList = categories.active === 'all' ? products :
+    products.filter(product => product.category === categories.active);
 
   const showDetails = (product) => {
     setSelectedProduct(product);
@@ -25,9 +23,9 @@ function Products(props) {
 
   const addToCart = (product) => {
     if (product.inventoryCount >= 1) {
-      store.dispatch({ type: 'add_product', payload: { product } });
+      dispatch({ type: 'add_product', payload: { product } });
       const updatedProduct = {...product, inventoryCount: product.inventoryCount - 1 }
-      store.dispatch({type: 'update_product', payload: updatedProduct});
+      dispatch({type: 'update_product', payload: updatedProduct});
     } else {
       alert('out of stock');
     }
@@ -62,9 +60,4 @@ function Products(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  categories: state.categories,
-  products: state.products.products,
-});
-
-export default connect(mapStateToProps)(Products);
+export default Products;

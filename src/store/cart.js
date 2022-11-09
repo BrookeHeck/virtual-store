@@ -38,9 +38,6 @@ const reducer = (state=initialState, action) => {
         productList: getNewProductList(state.productList, action.payload.product, false),
       }
       return state;
-    case 'clear_cart':
-      state = {numberOfItems: 0, productList: []}
-      return state;
     default: return state;
   }
 }
