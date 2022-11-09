@@ -34,4 +34,6 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 ### Change Logs
-nov-07-2022 @ 1910 - redux store holds categories, cart and products, products are displayed and can be filtered by category 
+nov-07-2022 @ 1910 - redux store holds categories, cart and products, products are displayed and can be filtered by category
+
+nov-08-2022 @ 1907 - cart features fully functioning
