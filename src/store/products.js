@@ -33,14 +33,16 @@ const initialState = {
   ]
 }
 
-const reducer = (state=initialState, action) => {
-  if(action.type === 'update_product' && action.payload.normalized) {
-    const newProducts = state.products.map(product => {
-      if(product.normalized !== action.payload.normalized) return product;
-      else return action.payload
-    });
-    return {...state, products: newProducts }
-  } else return state;
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'update_product':
+      const newProducts = state.products.map(product => {
+        if (product.normalized !== action.payload.normalized) return product;
+        else return action.payload
+      });
+      return { ...state, products: newProducts }
+    default: return state;
+  }
 }
 
 export default reducer;

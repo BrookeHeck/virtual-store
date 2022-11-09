@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography, Container } from '@mui/material';
+import store from './../../store';
+import { Card, CardActions, CardContent, CardMedia, Button } from '@mui/material';
+import { Typography, Container } from '@mui/material';
 import Details from './../products/details';
 import './../../styles/products.css';
+
+{/* <Snackbar open={true} autoHideDuration={5000}>
+          <Alert severity="error" sx={{ width: '100%' }}>Out of Stock</Alert>
+        </Snackbar> */}
 
 
 function Products(props) {
@@ -15,6 +21,17 @@ function Products(props) {
   const showDetails = (product) => {
     setSelectedProduct(product);
     setShowModal(true);
+  }
+
+  const addToCart = (product) => {
+    if (product.inventoryCount >= 1) {
+      store.dispatch({ type: 'add_product', payload: { product } });
+      const updatedProduct = {...product, inventoryCount: product.inventoryCount - 1 }
+      store.dispatch({type: 'update_product', payload: updatedProduct});
+      console.log(updatedProduct);
+    } else {
+      alert('out of stock');
+    }
   }
 
   return (
@@ -35,7 +52,7 @@ function Products(props) {
             </CardContent>
 
             <CardActions>
-              <Button size="small">Add To Cart</Button>
+              <Button size="small" onClick={() => addToCart(product)}>Add To Cart</Button>
               <Button size="small" onClick={() => showDetails(product)}>View Details</Button>
             </CardActions>
           </Card>
