@@ -7,7 +7,7 @@ import './../../styles/products.css';
 
 function Products() {
   const dispatch = useDispatch();
-  const products = useSelector(state => state.products).products;
+  const products = useSelector(state => state.products).products.results;
   const categories = useSelector(state => state.categories);
 
   const [showModal, setShowModal] = useState(false);
@@ -22,9 +22,9 @@ function Products() {
   }
 
   const addToCart = (product) => {
-    if (product.inventoryCount >= 1) {
+    if (product.inStock >= 1) {
       dispatch({ type: 'add_product', payload: { product } });
-      const updatedProduct = {...product, inventoryCount: product.inventoryCount - 1 }
+      const updatedProduct = {...product, inventoryCount: product.inStock - 1 }
       dispatch({type: 'update_product', payload: updatedProduct});
     } else {
       alert('out of stock');
@@ -35,12 +35,12 @@ function Products() {
     <Container id='productsContainer'>
       {
         displayList.map(product => (
-          <Card sx={{ maxWidth: 345 }} key={product.id}>
+          <Card sx={{ maxWidth: 345 }} key={product._id}>
             <CardMedia
               component="img"
               height="140"
               image={product.img}
-              alt="green iguana"
+              alt={product.name}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">{product.display}</Typography>

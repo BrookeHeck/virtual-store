@@ -1,28 +1,29 @@
 import axios from 'axios';
 
-function getAllPayload(arr) {
+function getAllPayload(arr, endpoint) {
   return {
-    type: `get_products`,
+    type: `get_${endpoint}`,
     payload: arr
   }
 }
 
-const getRequest = async () => {
+const getRequest = async (endpoint) => {
   try {
     const response = await axios({
       method: 'get',
-      url: `${process.env.REACT_APP_SERVER}/products`,
+      url: `${process.env.REACT_APP_SERVER}/${endpoint}`,
     });
+    console.log(response.data);
     return response.data;
 
   } catch (e) { console.log(e) }
 }
 
-function readAll() {
+function readAll(endpoint) {
   return async function (dispatch) {
     try {
-      const productArr = await getRequest();
-      return dispatch(getAllPayload(productArr));
+      const arr = await getRequest(endpoint);
+      return dispatch(getAllPayload(arr, endpoint));
     } catch (e) {
       return console.log(e);
     }

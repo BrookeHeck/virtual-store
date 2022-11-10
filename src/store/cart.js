@@ -6,7 +6,7 @@ const initialState = {
 const getNewProductList = (list, product, add) => {
   let alreadyInCart = false;
   const newList = list.map(currentProduct => {
-    if(product.id !== currentProduct.id) return currentProduct;
+    if(product._id !== currentProduct._id) return currentProduct;
     else {
       alreadyInCart = true;
       add ? currentProduct.amountInCart++ : currentProduct.amountInCart--;

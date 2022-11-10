@@ -23,16 +23,13 @@ function Details({ showModal, setShowModal, selectedProduct }) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            {selectedProduct.display}
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {selectedProduct.description}
+            {selectedProduct.name}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Price: {`$${selectedProduct.price}.00`}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            In Stock: {selectedProduct.inventoryCount}
+            In Stock: {selectedProduct.inStock}
           </Typography>
           <Button onClick={() => setShowModal(false)}>Close</Button>
         </Box>
