@@ -9,7 +9,7 @@ const SimpleCart = () => {
 
   const removeFromCart = (product) => {
     dispatch({ type: 'remove_product', payload: { product } });
-    const updatedProduct = products.find(currProduct => currProduct.id === product.id);
+    const updatedProduct = products.find(currProduct => currProduct._id === product._id);
     updatedProduct.inventoryCount++;
     dispatch({ type: 'update_product', payload: updatedProduct });
   }
@@ -23,12 +23,12 @@ const SimpleCart = () => {
       <Container id='productsContainer'>
         {
           cart.productList.map(product => (
-            <Card sx={{ maxWidth: 345 }} key={product.id}>
+            <Card sx={{ maxWidth: 345 }} key={product._id}>
               <CardMedia
                 component="img"
                 height="140"
                 image={product.img}
-                alt="green iguana"
+                alt={product.name}
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">{product.display}</Typography>
