@@ -14,7 +14,7 @@ const getRequest = async (endpoint) => {
       url: `${process.env.REACT_APP_SERVER}/${endpoint}`,
     });
     console.log(response.data);
-    return response.data;
+    return response.data.results;
 
   } catch (e) { console.log(e) }
 }

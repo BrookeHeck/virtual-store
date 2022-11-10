@@ -3,7 +3,7 @@ import { Typography, Container } from "@mui/material";
 import './../../styles/current-categories.css';
 
 function CurrentCategory() {
-  const categories = useSelector(state => state.categories).categories.results;
+  const categories = useSelector(state => state.categories).categories;
   const active = useSelector(state => state.categories).active;
 
   const activeCategory = categories.find(category => category.name === active);

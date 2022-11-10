@@ -18,7 +18,7 @@ function Categories() {
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
             {
-              categories.categories.results.map(category => {
+              categories.categories.map(category => {
                 return <Tab label={category.name} value={category.name} key={category.name}/>
               })
             }

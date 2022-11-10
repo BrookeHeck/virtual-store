@@ -7,7 +7,7 @@ import './../../styles/products.css';
 
 function Products() {
   const dispatch = useDispatch();
-  const products = useSelector(state => state.products).products.results;
+  const products = useSelector(state => state.products).products;
   const categories = useSelector(state => state.categories);
 
   const [showModal, setShowModal] = useState(false);
