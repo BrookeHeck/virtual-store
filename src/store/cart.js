@@ -27,7 +27,6 @@ const getNewProductList = (list, product, add) => {
 const reducer = (state=initialState, action) => {
   switch(action.type) {
     case 'add_product':
-      console.log(action.payload.product);
       state = {
         numberOfItems: state.numberOfItems + 1,
         productList: getNewProductList(state.productList, action.payload.product, true),

@@ -39,3 +39,5 @@ nov-07-2022 @ 1910 - redux store holds categories, cart and products, products a
 nov-08-2022 @ 1907 - cart features fully functioning
 
 nov-09-2022 @ 2023 - make requests to a server holding product info using thunk middleware
+
+nov-10-2022 @ 1213 - products and categories come from a server

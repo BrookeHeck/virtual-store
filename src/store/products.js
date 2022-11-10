@@ -5,7 +5,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'update_product':
-      console.log(action);
       const newProducts = state.products.map(product => {
         if (product.name !== action.payload.name) return product;
         else return action.payload;
